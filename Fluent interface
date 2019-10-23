@@ -1,0 +1,27 @@
+// BEGIN (write your solution here)
+  select(fn) {
+    this.collection = this.collection.map(fn);
+    return this;
+  }
+  // END
+
+  // BEGIN (write your solution here)
+  orderBy(fn, sort = 'asc') {
+
+    const comprator = (a, b) => {
+
+      const a1 = fn(a);
+      const b1 = fn(b);
+
+      const sorter = sort === 'desc' ? -1 : 1;
+
+      if (a1 > b1) {
+        return sorter;
+      }
+      if (a1 < b1) {
+        return -sorter;
+      }
+    }
+    this.collection = this.collection.sort(comprator);
+     return this; 
+  }
